@@ -137,17 +137,17 @@ public class MainActivity extends AppCompatActivity {
             Log.e(TAG, "--->on opened camera");
             cameraDevice = camera;
             createCameraPreview();
-
         }
 
         @Override
         public void onDisconnected(@NonNull CameraDevice cameraDevice) {
-
+            cameraDevice.close();
         }
 
         @Override
-        public void onError(@NonNull CameraDevice cameraDevice, int i) {
-
+        public void onError(@NonNull CameraDevice camera, int i) {
+            cameraDevice.close();
+            cameraDevice = null;
         }
     };
 
@@ -181,4 +181,11 @@ public class MainActivity extends AppCompatActivity {
 
         }
     };
+
+    private void closeCamera () {
+        if(null != cameraDevice) {
+            cameraDevice.close();
+            cameraDevice = null;
+        }
+    }
 }
