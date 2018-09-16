@@ -121,6 +121,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
     protected void updatePreview () {
+        Log.e(TAG, "Buidling");
         if(null == cameraDevice) {
             Log.e(TAG, "UPDATE preview error, return");
         }
